@@ -58,7 +58,7 @@ class App extends Component {
     //     </a>
     //   </div>
     // );
-    return <LetterMorph />;
+    return <LetterMorph words={['a']} />;
   }
 }
 
