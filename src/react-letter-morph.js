@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { TweenLite, Power2 } from 'gsap';
 
 import { distance } from './utils/misc';
+import styles from './react-letter-morph.scss';
 
 class ReactLetterMorph extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class ReactLetterMorph extends Component {
     const { speed } = this.props;
 
     const ctx = findDOMNode(this.canvas).getContext('2d');
-    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     if (paths.length !== 0) {
       let newOffset = offset + speed / paths[pathIndex].length;
@@ -60,9 +61,11 @@ class ReactLetterMorph extends Component {
         },
         this.drawPathToCanvas
       );
+      this.state.offset = newOffset;
+      this.drawPathToCanvas();
     }
 
-    requestAnimationFrame(this.loop);
+    // requestAnimationFrame(this.loop);
   }
 
   tweenPaths() {
@@ -72,6 +75,7 @@ class ReactLetterMorph extends Component {
         ease: Power2.easeInOut,
         delay: props.period,
         onComplete: () => {
+          console.log(this.interpolationPoint);
           this.interpolationPoint.percentage = 0;
           this.setState(
             prevState => ({
@@ -87,34 +91,38 @@ class ReactLetterMorph extends Component {
   }
 
   drawPathToCanvas() {
-    const points = this.interpolatePaths();
-    let currentColor = this.getColorSegment(0);
+    // const points = this.interpolatePaths();
+    // let currentColor = this.getColorSegment(0);
+    // const ctx = findDOMNode(this.canvas).getContext('2d');
+    // ctx.strokeStyle = currentColor;
+    // ctx.beginPath();
+    //
+    // // draw the points
+    // for (let i = 0; i < points.length - 1; i++) {
+    //   ctx.moveTo(points[i].x, points[i].y);
+    //   if (
+    //     i &&
+    //     distance(points[i], points[i + 1]) >
+    //       2 * distance(points[i], points[i - 1])
+    //   ) {
+    //     continue;
+    //   }
+    //   ctx.lineTo(points[i + 1].x, points[i + 1].y);
+    //
+    //   currentColor = this.getColorSegment(i);
+    //
+    //   // if its not the same color then start a new path withe the new color
+    //   if (currentColor !== ctx.strokeStyle) {
+    //     ctx.stroke();
+    //     ctx.beginPath();
+    //     ctx.strokeStyle = currentColor;
+    //   }
+    // }
+    // ctx.stroke();
+    console.log('drawing');
     const ctx = findDOMNode(this.canvas).getContext('2d');
-    ctx.strokeStyle = currentColor;
-    ctx.beginPath();
-
-    // draw the points
-    for (let i = 0; i < points.length - 1; i++) {
-      ctx.moveTo(points[i].x, points[i].y);
-      if (
-        i &&
-        distance(points[i], points[i + 1]) >
-          2 * distance(points[i], points[i - 1])
-      ) {
-        continue;
-      }
-      ctx.lineTo(points[i + 1].x, points[i + 1].y);
-
-      currentColor = this.getColorSegment(i);
-
-      // if its not the same color then start a new path withe the new color
-      if (currentColor !== ctx.strokeStyle) {
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.strokeStyle = currentColor;
-      }
-    }
-    ctx.stroke();
+    ctx.strokeStyle = 'blue';
+    ctx.fillRect(0, 0, ctx.width, ctx.height);
   }
 
   getColorSegment(index) {
@@ -216,12 +224,19 @@ class ReactLetterMorph extends Component {
     this.resetAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.resetAnimation();
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.resetAnimation();
+  // }
 
   render() {
-    return <canvas ref={canvas => (this.canvas = canvas)} />;
+    return (
+      <div>
+        <canvas
+          ref={canvas => (this.canvas = canvas)}
+          className={styles.base}
+        />
+      </div>
+    );
   }
 }
 
