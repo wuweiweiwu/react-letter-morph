@@ -52,6 +52,8 @@
     }
   },
   "dependencies": {
+    "gsap": "^1.20.3",
+    "opentype.js": "^0.7.3",
     "prop-types": "^15.6.0",
     "react-style-proptype": "^3.1.0"
   },

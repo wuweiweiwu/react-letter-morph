@@ -1,6 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
+import LetterMorph from '../../src';
+
 import styles from './stylesheets/app.scss';
 import '../shared/favicon/favicon.ico';
 
@@ -27,7 +29,9 @@ class App extends Component {
         </section>
         <section className={styles['main-content']}>
           <h3>Demo</h3>
-          <div style={{ height: '700px' }} />
+          <div style={{ height: '700px' }}>
+            <LetterMorph />
+          </div>
           <a href={githubUrl}>Documentation on Github</a>
           <br />
           <a href="storybook/index.html">More examples on Storybook</a>
