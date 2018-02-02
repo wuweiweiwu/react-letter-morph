@@ -20,6 +20,7 @@ class App extends Component {
       <LetterMorph
         words={['I', 'LOVE', 'YOU']}
         colors={'#ff0049', '#ffffff'}
+      />
     );
   }
 }
