@@ -15,9 +15,9 @@ Platform:
 
 npm manifest: 
   {
-    "name": "react-isometric-grid",
-    "version": "0.0.2",
-    "description": "Isometric grid component for React",
+    "name": "react-letter-morph",
+    "version": "0.0.4",
+    "description": "Letter morphing component for React",
     "scripts": {
       "build": "npm run clean && cross-env NODE_ENV=production TARGET=umd webpack --bail",
       "build:demo": "npm run clean:demo && cross-env NODE_ENV=production TARGET=demo webpack --bail && npm run build-storybook",
@@ -29,7 +29,7 @@ npm manifest:
       "prepublishOnly": "npm run lint && npm run test && npm run build",
       "test": "jest",
       "test:watch": "jest --watchAll",
-      "test:coverage": "jest --coverage && ./cc-test-reporter after-build --id=\"078550efafc3dbb8faf56159f96a1f6aed1bf6633c08cea85d7ac08a45c781b9\"",
+      "test:coverage": "jest --coverage && ./cc-test-reporter after-build --id=\"2f75c58b464a2028a0dacf6aff96bcb6b4a437745e50e482e9bdd8b06b40f004\"",
       "deploy": "npm run build:demo && gh-pages -d build",
       "storybook": "cross-env TARGET=development start-storybook -p ${PORT:-3001} -h 0.0.0.0",
       "build-storybook": "cross-env NODE_ENV=production TARGET=demo build-storybook -o build/storybook"
@@ -40,10 +40,10 @@ npm manifest:
     ],
     "repository": {
       "type": "git",
-      "url": "https://github.com/wuweiweiwu/react-isometric-grid"
+      "url": "https://github.com/wuweiweiwu/react-letter-morph"
     },
-    "homepage": "https://github.com/wuweiweiwu/react-isometric-grid",
-    "bugs": "https://github.com/wuweiweiwu/react-isometric-grid/issues",
+    "homepage": "https://github.com/wuweiweiwu/react-letter-morph",
+    "bugs": "https://github.com/wuweiweiwu/react-letter-morph/issues",
     "authors": [
       "Wei-Wei Wu"
     ],
@@ -68,15 +68,11 @@ npm manifest:
       }
     },
     "dependencies": {
-      "bonzo": "^2.0.0",
-      "classnames": "^2.2.5",
-      "dynamics.js": "^1.1.5",
-      "imagesloaded": "^4.1.4",
-      "masonry-layout": "^4.2.1",
-      "normalize.css": "^7.0.0",
+      "gsap": "^1.20.3",
+      "lodash": "^4.17.4",
+      "opentype.js": "^0.7.3",
       "prop-types": "^15.6.0",
-      "react-style-proptype": "^3.1.0",
-      "uniqid": "^4.1.1"
+      "react-style-proptype": "^3.1.0"
     },
     "peerDependencies": {
       "react": "^15.3.0 || ^16.0.0",
@@ -97,7 +93,9 @@ npm manifest:
       "babel-plugin-transform-object-rest-spread": "^6.26.0",
       "babel-polyfill": "^6.26.0",
       "babel-preset-env": "^1.6.1",
+      "babel-preset-es2015": "^6.24.1",
       "babel-preset-react": "^6.11.1",
+      "codesandbox": "^1.1.14",
       "cross-env": "^5.1.3",
       "css-loader": "^0.28.8",
       "enzyme": "^3.3.0",
@@ -125,7 +123,6 @@ npm manifest:
       "react-dnd-touch-backend": "^0.3.20",
       "react-dom": "^16.2.0",
       "react-hot-loader": "^3.1.3",
-      "react-sortable-tree-theme-file-explorer": "^1.1.2",
       "react-test-renderer": "^16.2.0",
       "rimraf": "^2.6.2",
       "sass-loader": "^6.0.6",

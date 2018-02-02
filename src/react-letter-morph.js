@@ -15,7 +15,7 @@ class ReactLetterMorph extends Component {
     super(props);
 
     // how many steps in each animation
-    this.steps = 2000;
+    this.steps = 500;
 
     // how fast to transiton
     this.transitionTime = 2;
