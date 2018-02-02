@@ -7832,10 +7832,6 @@ var _app2 = _interopRequireDefault(_app);
 
 __webpack_require__(80);
 
-var _exampleFont = __webpack_require__(81);
-
-var _exampleFont2 = _interopRequireDefault(_exampleFont);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7900,7 +7896,6 @@ var App = function (_Component) {
               words: ['19:35:02', '19:35:03', '15:35:04', '19:35:05', '19:35:06', '14:35:07', '19:35:08', '19:35:09', '19:35:10', '18:35:11', '19:35:12', '19:35:13', '19:35:14', '09:35:15', '19:35:16', '19:35:99', '19:33:06', '19:35:07', '29:25:08', '19:35:09', '59:35:10', '19:55:11', '19:69:12', '19:35:83'],
               height: 300,
               width: 1000,
-              fontUrl: _exampleFont2.default,
               colors: ['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']
             })
           ),
@@ -43818,12 +43813,6 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/favicon.ico";
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/example-font.woff";
 
 /***/ })
 /******/ ]);
