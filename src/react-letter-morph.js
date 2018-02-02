@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TweenLite, Power2 } from 'gsap';
+import stylePropType from 'react-style-proptype';
 
 import { distance } from './utils/misc';
-import styles from './react-letter-morph.scss';
+
+const DEFAULT_STYLE = {
+  position: 'relative',
+};
 
 class ReactLetterMorph extends Component {
   constructor(props) {
@@ -188,28 +192,32 @@ class ReactLetterMorph extends Component {
 
   resetAnimation() {
     const { width, height, lineWidth } = this.props;
-    this.getPaths().then(paths => {
-      this.setState(
-        {
-          paths,
-          pathIndex: 0,
-        },
-        () => {
-          if (!this.canvas) {
-            return;
-          }
-          const ctx = this.canvas.getContext('2d');
-          ctx.lineCap = 'round';
-          ctx.lineWidth = lineWidth;
+    this.getPaths()
+      .then(paths => {
+        this.setState(
+          {
+            paths,
+            pathIndex: 0,
+          },
+          () => {
+            if (!this.canvas) {
+              return;
+            }
+            const ctx = this.canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineWidth = lineWidth;
 
-          if (this.state.animation) {
-            this.state.animation.kill();
+            if (this.state.animation) {
+              this.state.animation.kill();
+            }
+            this.tweenPaths();
+            this.loop();
           }
-          this.tweenPaths();
-          this.loop();
-        }
-      );
-    });
+        );
+      })
+      .catch(error => {
+        console.error(`Failed to get paths: ${error}`);
+      });
   }
 
   componentDidMount() {
@@ -221,17 +229,18 @@ class ReactLetterMorph extends Component {
   }
 
   render() {
-    const { height, width } = this.props;
+    const { height, width, style } = this.props;
 
     return (
-      <div>
-        <canvas
-          ref={canvas => (this.canvas = canvas)}
-          height={height}
-          width={width}
-          className={styles.base}
-        />
-      </div>
+      <canvas
+        ref={canvas => (this.canvas = canvas)}
+        height={height}
+        width={width}
+        style={{
+          ...DEFAULT_STYLE,
+          style,
+        }}
+      />
     );
   }
 }
@@ -261,6 +270,9 @@ ReactLetterMorph.propTypes = {
 
   // speed of the animation
   speed: PropTypes.number,
+
+  // style of the canvas element
+  style: stylePropType,
 };
 
 ReactLetterMorph.defaultProps = {
@@ -273,6 +285,7 @@ ReactLetterMorph.defaultProps = {
   lineWidth: 2,
   period: 2,
   speed: 2,
+  style: DEFAULT_STYLE,
 };
 
 export default ReactLetterMorph;
