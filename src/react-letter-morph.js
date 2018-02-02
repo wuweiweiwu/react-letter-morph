@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TweenLite, Power2 } from 'gsap';
 import stylePropType from 'react-style-proptype';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 import { distance, getSvgPath } from './utils/misc';
 
