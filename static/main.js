@@ -7893,7 +7893,7 @@ var App = function (_Component) {
             'div',
             { style: { height: '200px', textAlign: 'center' } },
             _react2.default.createElement(_src2.default, {
-              words: ['19:35:02', '19:35:03', '15:35:04', '19:35:05', '19:35:06', '14:35:07', '19:35:08', '19:35:09', '19:35:10', '18:35:11', '19:35:12', '19:35:13', '19:35:14', '09:35:15', '19:35:16', '19:35:99', '19:33:06', '19:35:07', '29:25:08', '19:35:09', '59:35:10', '19:55:11', '19:69:12', '19:35:83'],
+              words: ['19:35:02', '29:85:13', '37:35:04', '44:99:05', '19:35:06'],
               height: 300,
               width: 1000,
               colors: ['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']
@@ -8052,7 +8052,7 @@ var ReactLetterMorph = function (_Component) {
     // how many steps in each animation
     var _this = _possibleConstructorReturn(this, (ReactLetterMorph.__proto__ || Object.getPrototypeOf(ReactLetterMorph)).call(this, props));
 
-    _this.steps = 2000;
+    _this.steps = 500;
 
     // how fast to transiton
     _this.transitionTime = 2;
