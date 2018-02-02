@@ -6,8 +6,6 @@ import LetterMorph from '../../src';
 import styles from './stylesheets/app.scss';
 import '../shared/favicon/favicon.ico';
 
-import exampleFont from './example-font.woff';
-
 class App extends Component {
   render() {
     const projectName = 'React Letter Morph';
@@ -57,7 +55,6 @@ class App extends Component {
               ]}
               height={300}
               width={1000}
-              fontUrl={exampleFont}
               colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
             />
           </div>
