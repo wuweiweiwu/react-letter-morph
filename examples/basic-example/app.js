@@ -34,7 +34,7 @@ class App extends Component {
                 '44:99:05',
                 '19:35:06',
               ]}
-              height={300}
+              height={150}
               width={1000}
               colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
             />
