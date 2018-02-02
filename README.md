@@ -37,7 +37,7 @@ export default App;
 | colors             | array of strings | array of css colors that the letters will be drawn in          | `[]`                       |
 | height             | number           | height of the rendered canvas (px)                             | `200`                      |
 | width              | number           | width of the rendered canvas (px)                              | `500`                      |
-| font               | string           | url or path of the font. Can be .WOFF, .OTF, .TTF              | [below](#default-font-url) |
+| fontUrl            | string           | url or path of the font. Can be .WOFF, .OTF, .TTF              | [below](#default-font-url) |
 | fontSize           | number           | size of the font (px)                                          | `200`                      |
 | lineWidth          | number           | thickness of the outlines (px)                                 | `2`                        |
 | period             | number           | how long it takes for words to transition (smaller the faster) | `2`                        |

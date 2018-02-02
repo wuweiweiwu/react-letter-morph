@@ -55,10 +55,10 @@ class ReactLetterMorph extends Component {
   }
 
   getPaths() {
-    const { words, font, fontSize } = this.props;
+    const { words, fontUrl, fontSize } = this.props;
     return new Promise((resolve, reject) => {
       // eslint-disable-next-line global-require
-      require('opentype.js').load(font, (err, font) => {
+      require('opentype.js').load(fontUrl, (err, font) => {
         if (err) {
           reject(new Error(`Failed to load font: ${err}`));
         } else {
@@ -252,7 +252,7 @@ ReactLetterMorph.propTypes = {
   colors: PropTypes.arrayOf(PropTypes.string),
 
   // font url
-  font: PropTypes.string,
+  fontUrl: PropTypes.string,
 
   // fontSize of the words
   fontSize: PropTypes.number,
@@ -274,7 +274,7 @@ ReactLetterMorph.defaultProps = {
   height: 200,
   width: 500,
   colors: [],
-  font:
+  fontUrl:
     'https://fonts.gstatic.com/s/pacifico/v9/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-xsNqO47m55DA.woff',
   fontSize: 200,
   lineWidth: 2,
