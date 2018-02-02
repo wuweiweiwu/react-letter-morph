@@ -7894,7 +7894,7 @@ var App = function (_Component) {
             { style: { height: '200px', textAlign: 'center' } },
             _react2.default.createElement(_src2.default, {
               words: ['19:35:02', '29:85:13', '37:35:04', '44:99:05', '19:35:06'],
-              height: 300,
+              height: 150,
               width: 1000,
               colors: ['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']
             })
