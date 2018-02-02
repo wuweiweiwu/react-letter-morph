@@ -6,6 +6,8 @@ import LetterMorph from '../../src';
 import styles from './stylesheets/app.scss';
 import '../shared/favicon/favicon.ico';
 
+import exampleFont from './example-font.woff';
+
 class App extends Component {
   render() {
     const projectName = 'React Letter Morph';
@@ -25,11 +27,37 @@ class App extends Component {
         </section>
         <section className={styles['main-content']}>
           <h3>Demo</h3>
-          <div style={{ height: '500px', textAlign: 'center' }}>
+          <div style={{ height: '200px', textAlign: 'center' }}>
             <LetterMorph
-              words={['react', 'letter', 'morph', 'is', 'awesome', '!!!!']}
-              height={500}
-              width={800}
+              words={[
+                '19:35:02',
+                '19:35:03',
+                '15:35:04',
+                '19:35:05',
+                '19:35:06',
+                '14:35:07',
+                '19:35:08',
+                '19:35:09',
+                '19:35:10',
+                '18:35:11',
+                '19:35:12',
+                '19:35:13',
+                '19:35:14',
+                '09:35:15',
+                '19:35:16',
+                '19:35:99',
+                '19:33:06',
+                '19:35:07',
+                '29:25:08',
+                '19:35:09',
+                '59:35:10',
+                '19:55:11',
+                '19:69:12',
+                '19:35:83',
+              ]}
+              height={300}
+              width={1000}
+              fontUrl={exampleFont}
               colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
             />
           </div>

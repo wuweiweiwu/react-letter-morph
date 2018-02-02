@@ -96,6 +96,10 @@ switch (target) {
       use: [fileLoader],
       exclude: path.join(__dirname, 'node_modules'),
     });
+    config.module.rules.push({
+      test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+      use: [fileLoader],
+    });
     config.entry = ['react-hot-loader/patch', './examples/basic-example/index'];
     config.output = {
       path: path.join(__dirname, 'build'),
@@ -121,6 +125,10 @@ switch (target) {
       test: /\.(jpe?g|png|gif|ico|svg)$/,
       use: [fileLoader],
       exclude: path.join(__dirname, 'node_modules'),
+    });
+    config.module.rules.push({
+      test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+      use: [fileLoader],
     });
     config.entry = './examples/basic-example/index';
     config.output = {
