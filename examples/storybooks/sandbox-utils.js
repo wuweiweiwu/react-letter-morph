@@ -2,7 +2,7 @@
 import { getParameters } from 'codesandbox/lib/api/define';
 
 const GIT_URL =
-  'https://api.github.com/repos/wuweiweiwu/react-isometric-grid/contents';
+  'https://api.github.com/repos/wuweiweiwu/react-letter-morph/contents';
 
 export const SANDBOX_URL = 'https://codesandbox.io/api/v1/sandboxes/define';
 
@@ -10,7 +10,7 @@ export const SANDBOX_URL = 'https://codesandbox.io/api/v1/sandboxes/define';
 const getURL = filename => `${GIT_URL}/examples/storybooks/${filename}`;
 
 // strip ../../src from the src
-const strip = code => code.replace('../../src', 'react-isometric-grid');
+const strip = code => code.replace('../../src', 'react-letter-morph');
 
 // modify code so we can just have one file in the sandbox. index.js
 const modify = code => {
@@ -43,8 +43,7 @@ const getPayload = code =>
             react: 'latest',
             'react-dom': 'latest',
             'prop-types': 'latest',
-            'react-isometric-grid': 'latest',
-            'dynamics.js': 'latest',
+            'react-letter-morph': 'latest',
           },
         },
       },

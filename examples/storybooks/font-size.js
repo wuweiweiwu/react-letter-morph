@@ -7,31 +7,31 @@ class App extends Component {
     return (
       <div>
         <LetterMorph
-          words={['a', 'b', 'c', 'd', 'e']}
+          words={['0', '1', '2', '3', '4', '5', '6']}
+          fontSize={50}
           height={200}
           width={300}
-          period={0.1}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
-          words={['a', 'b', 'c', 'd', 'e']}
+          words={['0', '1', '2', '3', '4', '5', '6']}
+          fontSize={100}
           height={200}
           width={300}
-          period={0.5}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
-          words={['a', 'b', 'c', 'd', 'e']}
+          words={['0', '1', '2', '3', '4', '5', '6']}
+          fontSize={150}
           height={200}
           width={300}
-          period={2}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
-        />
+        />{' '}
         <LetterMorph
-          words={['a', 'b', 'c', 'd', 'e']}
+          words={['0', '1', '2', '3', '4', '5', '6']}
+          fontSize={200}
           height={200}
           width={300}
-          period={5}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
       </div>

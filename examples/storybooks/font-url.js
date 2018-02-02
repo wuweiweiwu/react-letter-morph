@@ -10,28 +10,27 @@ class App extends Component {
           words={['a', 'b', 'c', 'd', 'e']}
           height={200}
           width={300}
-          period={0.1}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
           height={200}
           width={300}
-          period={0.5}
+          fontUrl="https://raw.githubusercontent.com/Thisisdotme/frontend-design-assets/master/tim-oreilly/fonts/newsgothic-bold.otf"
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
           height={200}
           width={300}
-          period={2}
+          fontUrl="https://raw.githubusercontent.com/Thisisdotme/frontend-design-assets/master/mc-hammer/fonts/centuryschoolbook.otf"
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
           height={200}
           width={300}
-          period={5}
+          fontUrl="https://raw.githubusercontent.com/Thisisdotme/frontend-design-assets/master/true-ventures/fonts/helveticaneue-condensed-bold.otf"
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
       </div>

@@ -8,30 +8,30 @@ class App extends Component {
       <div>
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
+          lineWidth={0.5}
           height={200}
           width={300}
-          period={0.1}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
+          lineWidth={2}
           height={200}
           width={300}
-          period={0.5}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
+          lineWidth={5}
           height={200}
           width={300}
-          period={2}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
         <LetterMorph
           words={['a', 'b', 'c', 'd', 'e']}
+          lineWidth={10}
           height={200}
           width={300}
-          period={5}
           colors={['#ff0000', '#53c93f', '#5c89ff', '#cd7dff']}
         />
       </div>
