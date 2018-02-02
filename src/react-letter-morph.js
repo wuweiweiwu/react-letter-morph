@@ -58,7 +58,7 @@ class ReactLetterMorph extends Component {
     const { words, font, fontSize } = this.props;
     return new Promise((resolve, reject) => {
       // eslint-disable-next-line global-require
-      require('opentype.js').load(font, (err, res) => {
+      require('opentype.js').load(font, (err, font) => {
         if (err) {
           reject(new Error(`Failed to load font: ${err}`));
         } else {
@@ -66,14 +66,14 @@ class ReactLetterMorph extends Component {
 
           // update offsetY
           words.forEach(word => {
-            const box = res.getPath(word, 0, 0, fontSize);
+            const box = font.getPath(word, 0, 0, fontSize);
             const y = box.getBoundingBox().y2 - box.getBoundingBox().y1;
             offsetY = Math.max(offsetY, y);
           });
 
           const paths = words.map(word => {
-            // get the stroke from the font (res)
-            const pathStroke = res
+            // get the stroke from the font
+            const pathStroke = font
               .getPath(word, 0, offsetY, fontSize)
               .toPathData(2);
             const path = getSvgPath();
