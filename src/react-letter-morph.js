@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TweenLite, Power2 } from 'gsap';
 import stylePropType from 'react-style-proptype';
+import _ from 'lodash';
 
-import { distance } from './utils/misc';
+import { distance, getSvgPath } from './utils/misc';
 
 const DEFAULT_STYLE = {
   position: 'relative',
@@ -45,6 +46,63 @@ class ReactLetterMorph extends Component {
     this.resetAnimation = this.resetAnimation.bind(this);
   }
 
+  componentDidMount() {
+    this.resetAnimation();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEqual(this.props, nextProps)) this.resetAnimation();
+  }
+
+  getPaths() {
+    const { words, font, fontSize } = this.props;
+    return new Promise((resolve, reject) => {
+      // eslint-disable-next-line global-require
+      require('opentype.js').load(font, (err, res) => {
+        if (err) {
+          reject(new Error(`Failed to load font: ${err}`));
+        } else {
+          let offsetY = 0;
+
+          // update offsetY
+          words.forEach(word => {
+            const box = res.getPath(word, 0, 0, fontSize);
+            const y = box.getBoundingBox().y2 - box.getBoundingBox().y1;
+            offsetY = Math.max(offsetY, y);
+          });
+
+          const paths = words.map(word => {
+            // get the stroke from the font (res)
+            const pathStroke = res
+              .getPath(word, 0, offsetY, fontSize)
+              .toPathData(2);
+            const path = getSvgPath();
+            path.setAttribute('d', pathStroke);
+            const length = path.getTotalLength();
+            // get points from the svg
+            const points = Array.from(Array(this.steps).keys()).map(i =>
+              path.getPointAtLength(length * i / this.steps)
+            );
+            return {
+              length,
+              path: points,
+            };
+          });
+          resolve(paths);
+        }
+      });
+    });
+  }
+
+  getColorSegment(index) {
+    const { colors } = this.props;
+    const { offset } = this.state;
+    let p = index / this.steps + offset;
+    if (p > 1) p -= 1;
+    const point = Math.floor(p * colors.length);
+    return colors[point];
+  }
+
   loop() {
     if (!this.canvas) {
       return;
@@ -71,127 +129,8 @@ class ReactLetterMorph extends Component {
     requestAnimationFrame(this.loop);
   }
 
-  tweenPaths() {
-    this.setState((prevState, props) => ({
-      animation: TweenLite.to(this.interpolationPoint, this.transitionTime, {
-        percentage: 1,
-        ease: Power2.easeInOut,
-        delay: props.period,
-        onComplete: () => {
-          this.interpolationPoint.percentage = 0;
-          this.setState(
-            prevState => ({
-              pathIndex: prevState.paths.length
-                ? (prevState.pathIndex + 1) % prevState.paths.length
-                : prevState.pathIndex,
-            }),
-            this.tweenPaths
-          );
-        },
-      }),
-    }));
-  }
-
-  drawPathToCanvas() {
-    const points = this.interpolatePaths();
-    let currentColor = this.getColorSegment(0);
-    const ctx = this.canvas.getContext('2d');
-    ctx.strokeStyle = currentColor;
-    ctx.beginPath();
-
-    // draw the points
-    for (let i = 0; i < points.length - 1; i++) {
-      ctx.moveTo(points[i].x, points[i].y);
-      if (
-        i &&
-        distance(points[i], points[i + 1]) >
-          2 * distance(points[i], points[i - 1])
-      ) {
-        continue;
-      }
-      ctx.lineTo(points[i + 1].x, points[i + 1].y);
-
-      currentColor = this.getColorSegment(i);
-
-      // if its not the same color then start a new path withe the new color
-      if (currentColor !== ctx.strokeStyle) {
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.strokeStyle = currentColor;
-      }
-    }
-    ctx.stroke();
-  }
-
-  getColorSegment(index) {
-    const { colors } = this.props;
-    const { offset } = this.state;
-    let p = index / this.steps + offset;
-    if (p > 1) p -= 1;
-    const point = Math.floor(p * colors.length);
-    return colors[point];
-  }
-
-  interpolatePaths() {
-    const { paths, pathIndex } = this.state;
-    const from = paths[pathIndex % paths.length].path;
-    const to = paths[(pathIndex + 1) % paths.length].path;
-    const points = Array.from(Array(this.steps).keys()).map(i => ({
-      x: from[i].x + (to[i].x - from[i].x) * this.interpolationPoint.percentage,
-      y: from[i].y + (to[i].y - from[i].y) * this.interpolationPoint.percentage,
-    }));
-    return points;
-  }
-
-  getPaths() {
-    const { words, font, fontSize } = this.props;
-    return new Promise((resolve, reject) => {
-      require('opentype.js').load(font, (err, res) => {
-        if (err) {
-          reject(`Failed to load font: ${err}`);
-        } else {
-          let offsetY = 0;
-
-          // update offsetY
-          words.forEach(word => {
-            const box = res.getPath(word, 0, 0, fontSize);
-            const y = box.getBoundingBox().y2 - box.getBoundingBox().y1;
-            offsetY = Math.max(offsetY, y);
-          });
-
-          const paths = words.map((word, index) => {
-            // get the stroke from the font (res)
-            const pathStroke = res
-              .getPath(word, 0, offsetY, fontSize)
-              .toPathData(2);
-            const svg = document.createElementNS(
-              'http://www.w3.org/2000/svg',
-              'svg'
-            );
-            const path = document.createElementNS(
-              'http://www.w3.org/2000/svg',
-              'path'
-            );
-            svg.appendChild(path);
-            path.setAttribute('d', pathStroke);
-            const length = path.getTotalLength();
-            // get points from the svg
-            const points = Array.from(Array(this.steps).keys()).map(i =>
-              path.getPointAtLength(length * i / this.steps)
-            );
-            return {
-              length,
-              path: points,
-            };
-          });
-          resolve(paths);
-        }
-      });
-    });
-  }
-
   resetAnimation() {
-    const { width, height, lineWidth } = this.props;
+    const { lineWidth } = this.props;
     this.getPaths()
       .then(paths => {
         this.setState(
@@ -216,16 +155,70 @@ class ReactLetterMorph extends Component {
         );
       })
       .catch(error => {
-        console.error(`Failed to get paths: ${error}`);
+        console.error(`Failed to get paths: ${error}`); // eslint-disable-line no-console
       });
   }
 
-  componentDidMount() {
-    this.resetAnimation();
+  tweenPaths() {
+    this.setState((prevState, props) => ({
+      animation: TweenLite.to(this.interpolationPoint, this.transitionTime, {
+        percentage: 1,
+        ease: Power2.easeInOut,
+        delay: props.period,
+        onComplete: () => {
+          this.interpolationPoint.percentage = 0;
+          this.setState(
+            ps => ({
+              pathIndex: ps.paths.length
+                ? (ps.pathIndex + 1) % ps.paths.length
+                : ps.pathIndex,
+            }),
+            this.tweenPaths
+          );
+        },
+      }),
+    }));
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.resetAnimation();
+  drawPathToCanvas() {
+    const points = this.interpolatePaths();
+    let currentColor = this.getColorSegment(0);
+    const ctx = this.canvas.getContext('2d');
+    ctx.strokeStyle = currentColor;
+    ctx.beginPath();
+
+    // draw the points
+    for (let i = 0; i < points.length - 1; i += 1) {
+      ctx.moveTo(points[i].x, points[i].y);
+      if (
+        !i ||
+        distance(points[i], points[i + 1]) <=
+          2 * distance(points[i], points[i - 1])
+      ) {
+        ctx.lineTo(points[i + 1].x, points[i + 1].y);
+
+        currentColor = this.getColorSegment(i);
+
+        // if its not the same color then start a new path withe the new color
+        if (currentColor !== ctx.strokeStyle) {
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = currentColor;
+        }
+      }
+    }
+    ctx.stroke();
+  }
+
+  interpolatePaths() {
+    const { paths, pathIndex } = this.state;
+    const from = paths[pathIndex % paths.length].path;
+    const to = paths[(pathIndex + 1) % paths.length].path;
+    const points = Array.from(Array(this.steps).keys()).map(i => ({
+      x: from[i].x + (to[i].x - from[i].x) * this.interpolationPoint.percentage,
+      y: from[i].y + (to[i].y - from[i].y) * this.interpolationPoint.percentage,
+    }));
+    return points;
   }
 
   render() {
@@ -233,7 +226,9 @@ class ReactLetterMorph extends Component {
 
     return (
       <canvas
-        ref={canvas => (this.canvas = canvas)}
+        ref={canvas => {
+          this.canvas = canvas;
+        }}
         height={height}
         width={width}
         style={{
