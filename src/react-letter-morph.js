@@ -50,9 +50,9 @@ class ReactLetterMorph extends Component {
     this.resetAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!_.isEqual(this.props, nextProps)) this.resetAnimation();
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (!_.isEqual(this.props, nextProps)) this.resetAnimation();
+  // }
 
   getPaths() {
     const { words, fontUrl, fontSize } = this.props;
