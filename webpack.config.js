@@ -41,7 +41,7 @@ const config = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
-    library: 'ReactSortableTree',
+    library: 'ReactLetterMorph',
   },
   devtool: 'source-map',
   plugins: [
@@ -96,10 +96,10 @@ switch (target) {
       use: [fileLoader],
       exclude: path.join(__dirname, 'node_modules'),
     });
-    config.module.rules.push({
-      test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-      use: [fileLoader],
-    });
+    // config.module.rules.push({
+    //   test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+    //   use: [fileLoader],
+    // });
     config.entry = ['react-hot-loader/patch', './examples/basic-example/index'];
     config.output = {
       path: path.join(__dirname, 'build'),
@@ -126,26 +126,32 @@ switch (target) {
       use: [fileLoader],
       exclude: path.join(__dirname, 'node_modules'),
     });
-    config.module.rules.push({
-      test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-      use: [fileLoader],
-    });
+    // config.module.rules.push({
+    //   test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+    //   use: [fileLoader],
+    // });
     config.entry = './examples/basic-example/index';
     config.output = {
       path: path.join(__dirname, 'build'),
       filename: 'static/[name].js',
     };
+    config.externals = [
+      nodeExternals({
+        // load non-javascript files with extensions, presumably via loaders
+        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+      }),
+    ];
     config.plugins = [
       new HtmlWebpackPlugin({
         inject: true,
         template: './examples/basic-example/index.html',
       }),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
-      // new webpack.optimize.UglifyJsPlugin({
-      //   compress: {
-      //     warnings: false,
-      //   },
-      // }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      }),
     ];
 
     break;
