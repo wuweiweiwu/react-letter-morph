@@ -1,5 +1,58 @@
 # react-letter-morph [![Build Status](https://travis-ci.org/wuweiweiwu/react-letter-morph.svg?branch=master)](https://travis-ci.org/wuweiweiwu/react-letter-morph)
 
+React Letter Morph :sparkles: Inspired by https://events.google.com/io2016/
+
+[![NPM](https://nodei.co/npm/react-letter-morph.png)](https://nodei.co/npm/react-letter-morph/)
+
+## [Demo](http://weiweiwu.me/react-letter-morph)
+
+![Example](https://media.giphy.com/media/xThtagc1XRkXN0fomA/giphy.gif)
+
+## Usage
+
+```javascript
+import React, { Component } from 'react';
+import LetterMorph from 'react-letter-morph';
+
+class App extends Component {
+  render() {
+    return (
+      <LetterMorph
+        words={['I', 'LOVE', 'YOU']}
+        colors={'#ff0049', '#ffffff'}
+    );
+  }
+}
+
+export default App;
+```
+
+## Options
+
+### Letter Morph
+
+| Prop               | Type             | Description                                                    | Default                    |
+| ------------------ | ---------------- | -------------------------------------------------------------- | -------------------------- |
+| words _(required)_ | array of strings | Words that you want letter morph to transition from and to     |                            |
+| colors             | array of strings | array of css colors that the letters will be drawn in          | `[]`                       |
+| height             | number           | height of the rendered canvas (px)                             | `200`                      |
+| width              | number           | width of the rendered canvas (px)                              | `500`                      |
+| font               | string           | url or path of the font. Can be .WOFF, .OTF, .TTF              | [below](#default-font-url) |
+| fontSize           | number           | size of the font (px)                                          | `200`                      |
+| lineWidth          | number           | thickness of the outlines (px)                                 | `2`                        |
+| period             | number           | how long it takes for words to transition (smaller the faster) | `2`                        |
+| speed              | number           | how long it takes for color to transition (smaller the faster) | `2`                        |
+| style              | object           | inline css styling for the canvas element                      | `{ position: 'relative' }` |
+
+#### Default font url
+
+`https://fonts.gstatic.com/s/pacifico/v9/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-xsNqO47m55DA.woff`
+
+## Troubleshooting
+
+**I can't see the animation** make sure your `height` and `width` are large enough that the animation is displayed
+
+**It's just black** set the `colors` prop
 
 ## Contributing
 
@@ -31,3 +84,8 @@ Pull requests are welcome!
 ## License
 
 MIT
+
+## Credits
+
+* [Rachel Smith](https://codepen.io/rachsmith/details/ONVQWv) for the original inspiration
+* [lichin-lin](https://github.com/lichin-lin) for how to get the letter paths
