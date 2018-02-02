@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TweenLite, Power2 } from 'gsap';
 import stylePropType from 'react-style-proptype';
-// import _ from 'lodash';
+import _ from 'lodash';
 
 import { distance, getSvgPath } from './utils/misc';
 
@@ -13,9 +13,6 @@ const DEFAULT_STYLE = {
 class ReactLetterMorph extends Component {
   constructor(props) {
     super(props);
-
-    // how many steps in each animation
-    this.steps = 500;
 
     // how fast to transiton
     this.transitionTime = 2;
@@ -50,12 +47,12 @@ class ReactLetterMorph extends Component {
     this.resetAnimation();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (!_.isEqual(this.props, nextProps)) this.resetAnimation();
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEqual(this.props, nextProps)) this.resetAnimation();
+  }
 
   getPaths() {
-    const { words, fontUrl, fontSize } = this.props;
+    const { words, fontUrl, fontSize, steps } = this.props;
     return new Promise((resolve, reject) => {
       // eslint-disable-next-line global-require
       require('opentype.js').load(fontUrl, (err, font) => {
@@ -80,8 +77,8 @@ class ReactLetterMorph extends Component {
             path.setAttribute('d', pathStroke);
             const length = path.getTotalLength();
             // get points from the svg
-            const points = Array.from(Array(this.steps).keys()).map(i =>
-              path.getPointAtLength(length * i / this.steps)
+            const points = Array.from(Array(steps).keys()).map(i =>
+              path.getPointAtLength(length * i / steps)
             );
             return {
               length,
@@ -95,9 +92,9 @@ class ReactLetterMorph extends Component {
   }
 
   getColorSegment(index) {
-    const { colors } = this.props;
+    const { colors, steps } = this.props;
     const { offset } = this.state;
-    let p = index / this.steps + offset;
+    let p = index / steps + offset;
     if (p > 1) p -= 1;
     const point = Math.floor(p * colors.length);
     return colors[point];
@@ -212,9 +209,10 @@ class ReactLetterMorph extends Component {
 
   interpolatePaths() {
     const { paths, pathIndex } = this.state;
+    const { steps } = this.props;
     const from = paths[pathIndex % paths.length].path;
     const to = paths[(pathIndex + 1) % paths.length].path;
-    const points = Array.from(Array(this.steps).keys()).map(i => ({
+    const points = Array.from(Array(steps).keys()).map(i => ({
       x: from[i].x + (to[i].x - from[i].x) * this.interpolationPoint.percentage,
       y: from[i].y + (to[i].y - from[i].y) * this.interpolationPoint.percentage,
     }));
@@ -268,6 +266,9 @@ ReactLetterMorph.propTypes = {
 
   // style of the canvas element
   style: stylePropType,
+
+  // how many steps each period takes. Less == more efficient
+  steps: PropTypes.number,
 };
 
 ReactLetterMorph.defaultProps = {
@@ -281,6 +282,7 @@ ReactLetterMorph.defaultProps = {
   period: 2,
   speed: 2,
   style: DEFAULT_STYLE,
+  steps: 500,
 };
 
 export default ReactLetterMorph;

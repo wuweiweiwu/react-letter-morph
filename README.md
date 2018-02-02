@@ -31,18 +31,19 @@ export default App;
 
 ### Letter Morph
 
-| Prop               | Type             | Description                                                    | Default                    |
-| ------------------ | ---------------- | -------------------------------------------------------------- | -------------------------- |
-| words _(required)_ | array of strings | Words that you want letter morph to transition from and to     |                            |
-| colors             | array of strings | array of css colors that the letters will be drawn in          | `[]`                       |
-| height             | number           | height of the rendered canvas (px)                             | `200`                      |
-| width              | number           | width of the rendered canvas (px)                              | `500`                      |
-| fontUrl            | string           | url or path of the font. Can be .WOFF, .OTF, .TTF              | [below](#default-font-url) |
-| fontSize           | number           | size of the font (px)                                          | `200`                      |
-| lineWidth          | number           | thickness of the outlines (px)                                 | `2`                        |
-| period             | number           | how long it takes for words to transition (smaller the faster) | `2`                        |
-| speed              | number           | how long it takes for color to transition (smaller the faster) | `2`                        |
-| style              | object           | inline css styling for the canvas element                      | `{ position: 'relative' }` |
+| Prop               | Type             | Description                                                              | Default                    |
+| ------------------ | ---------------- | ------------------------------------------------------------------------ | -------------------------- |
+| words _(required)_ | array of strings | Words that you want letter morph to transition from and to               |                            |
+| colors             | array of strings | array of css colors that the letters will be drawn in                    | `[]`                       |
+| height             | number           | height of the rendered canvas (px)                                       | `200`                      |
+| width              | number           | width of the rendered canvas (px)                                        | `500`                      |
+| fontUrl            | string           | url or path of the font. Can be .WOFF, .OTF, .TTF                        | [below](#default-font-url) |
+| fontSize           | number           | size of the font (px)                                                    | `200`                      |
+| lineWidth          | number           | thickness of the outlines (px)                                           | `2`                        |
+| period             | number           | how long it takes for words to transition (smaller the faster)           | `2`                        |
+| speed              | number           | how long it takes for color to transition (smaller the faster)           | `2`                        |
+| steps              | number           | steps in each period (smaller the more efficient but rougher animations) | `500`                      |
+| style              | object           | inline css styling for the canvas element                                | `{ position: 'relative' }` |
 
 #### Default font url
 
