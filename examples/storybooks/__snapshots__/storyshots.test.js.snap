@@ -1,3 +1,508 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Placeholder Dummy 1`] = `<div />`;
+exports[`Storyshots Basics Basic Morph 1`] = `
+<div>
+  <canvas
+    height={500}
+    style={
+      Object {
+        "position": "relative",
+        "style": Object {
+          "position": "relative",
+        },
+      }
+    }
+    width={800}
+  />
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/basic.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Different fontUrl 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/font-url.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Morph colors 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={500}
+    />
+    <br />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={500}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/color.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Morph fontSize 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+     
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/font-size.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Morph lineWidth 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/line-width.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Morph period 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/period.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
+
+exports[`Storyshots Basics Morph speed 1`] = `
+<div>
+  <div>
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+    <canvas
+      height={200}
+      style={
+        Object {
+          "position": "relative",
+          "style": Object {
+            "position": "relative",
+          },
+        }
+      }
+      width={300}
+    />
+  </div>
+  <br />
+  <form
+    action="https://codesandbox.io/api/v1/sandboxes/define"
+    id="codesandbox-form"
+    method="POST"
+  >
+    <input
+      id="codesandbox-parameters"
+      name="parameters"
+      type="hidden"
+    />
+  </form>
+  <button
+    className="sandboxButton"
+    onClick={[Function]}
+  >
+    PLAY WITH THIS CODE →
+  </button>
+  <a
+    className="sourceLink"
+    href="https://github.com/wuweiweiwu/react-isometric-grid/blob/master/examples/storybooks/speed.js"
+    rel="noopener noreferrer"
+    target="_top"
+  >
+    VIEW SOURCE →
+  </a>
+</div>
+`;
