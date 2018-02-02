@@ -135,23 +135,18 @@ switch (target) {
       path: path.join(__dirname, 'build'),
       filename: 'static/[name].js',
     };
-    config.externals = [
-      nodeExternals({
-        // load non-javascript files with extensions, presumably via loaders
-        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
-      }),
-    ];
+
     config.plugins = [
       new HtmlWebpackPlugin({
         inject: true,
         template: './examples/basic-example/index.html',
       }),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      }),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   compress: {
+      //     warnings: false,
+      //   },
+      // }),
     ];
 
     break;
